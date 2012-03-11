@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Code for the News feature.
+ */
+
+include_once('feature_news.features.inc');
+
+/**
+ * Implementation of hook_init()
+ */
+function feature_news_init() {
+  drupal_add_css(drupal_get_path('module', 'feature_news') . '/feature_news.css');
+}
