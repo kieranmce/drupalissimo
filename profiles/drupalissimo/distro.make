@@ -27,4 +27,4 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 
 projects[drupalissimo][type] = profile
 projects[drupalissimo][download][type] = git
-projects[drupalissimo][download][url] = git.nuvole.org:/var/git/drupalissimo-profile.git
+projects[drupalissimo][download][url] = git://github.com/drupaltraining/drupalissimo-profile.git

@@ -1,4 +1,4 @@
-name = starter Profile
+name = Drupalissimo Profile
 core = 7.x
 description = starter - installation profile template.
 
@@ -33,3 +33,6 @@ dependencies[] = views_ui
 
 ; Features
 dependencies[] = feature_core
+dependencies[] = feature_news
+dependencies[] = feature_pages
+dependencies[] = feature_spotlight
