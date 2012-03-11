@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Drupalissimo Core feature.
+ */
+
+include_once('drupalissimo_core.features.inc');

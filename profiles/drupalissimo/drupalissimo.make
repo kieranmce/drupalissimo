@@ -20,17 +20,17 @@ projects[feature_core][download][url] = git://github.com/drupaltraining/feature_
 projects[feature_news][type] = module
 projects[feature_news][subdir] = features
 projects[feature_news][download][type] = "git"
-projects[feature_news][download][url] = git.nuvole.org:/var/git/feature_news.git
+projects[feature_news][download][url] = git://github.com/drupaltraining/feature_news.git
 
 projects[feature_pages][type] = module
 projects[feature_pages][subdir] = features
 projects[feature_pages][download][type] = "git"
-projects[feature_pages][download][url] = git.nuvole.org:/var/git/feature_pages.git
+projects[feature_pages][download][url] = git://github.com/drupaltraining/feature_pages.git
 
 projects[feature_spotlight][type] = module
 projects[feature_spotlight][subdir] = features
 projects[feature_spotlight][download][type] = "git"
-projects[feature_spotlight][download][url] = git.nuvole.org:/var/git/feature_spotlight.git
+projects[feature_spotlight][download][url] = git://github.com/drupaltraining/feature_spotlight.git
 
 ; Themes ======================================================================
 

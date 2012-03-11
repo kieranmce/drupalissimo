@@ -1,0 +1,16 @@
+name = Sparkle
+description = Sparkle theme, based on Twist.
+base theme = twist
+core = 7.x
+engine = phptemplate
+
+stylesheets[screen][] = sparkle.css
+
+regions[branding] = Branding
+regions[content] = Content
+regions[featured] = Featured
+regions[help] = Help
+regions[left] = Left
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[right] = Right
