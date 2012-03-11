@@ -1,0 +1,35 @@
+name = starter Profile
+core = 7.x
+description = starter - installation profile template.
+
+; Core
+dependencies[] = book
+dependencies[] = block
+dependencies[] = contact
+dependencies[] = dblog
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = image
+dependencies[] = menu
+dependencies[] = path
+dependencies[] = taxonomy
+
+; Contrib
+dependencies[] = admin
+dependencies[] = libraries
+dependencies[] = colorbox
+dependencies[] = openid
+dependencies[] = openidadmin
+dependencies[] = context
+dependencies[] = context_ui
+dependencies[] = context_layouts
+dependencies[] = ctools
+dependencies[] = devel
+dependencies[] = diff
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = views
+dependencies[] = views_ui
+
+; Features
+dependencies[] = feature_core

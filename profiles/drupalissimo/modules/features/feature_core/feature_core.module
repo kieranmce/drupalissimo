@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Code for the Core feature.
+ */
+
+include_once('feature_core.features.inc');
+
+/**
+ * Implements of hook_menu_alter()
+ */
+function feature_core_menu_alter(&$items) {
+  $items['node']['page callback'] = 'feature_core_frontpage';
+}
+
+/**
+ * Implements of page callback.
+ * 
+ * @see: feature_core_menu_alter()
+ */
+function feature_core_frontpage() {
+  drupal_set_title('');
+  return array();
+}

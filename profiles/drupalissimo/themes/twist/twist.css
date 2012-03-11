@@ -1,0 +1,37 @@
+
+
+#footer,
+#branding { background-color: #eee; }
+#navigation { }
+
+ul.links.main-menu li a {
+  padding: 10px 20px;
+  border-right: 1px solid #ccc;
+}
+ul.links.main-menu li.last a {
+  border-right: 0;
+}
+
+.media-list-thumbnails .form-item.form-type-checkbox {
+  padding: 2px;
+  border-width: 0;
+}
+
+table.views-view-grid td, 
+table.views-view-grid th,
+table.views-view-grid tr {
+  vertical-align: top;
+  border-width: 0px;
+  border-style: solid;
+  border-color: transparent;
+  padding: 5px;
+}
+table.views-view-grid {
+  border-width: 0;
+}
+.views-display-top {
+  float: left;
+}
+.views-display-top .ctools-button {
+  z-index: 10;
+}

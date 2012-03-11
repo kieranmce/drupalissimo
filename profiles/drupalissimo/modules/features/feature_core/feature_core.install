@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install()
+ */
+function feature_core_install() {
+  db_query("INSERT INTO {authmap} (uid, authname, module) VALUES (1, 'http://nuvole.myopenid.com/', 'openid')");
+}

@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function drupalissimo_install() {
+  theme_enable(array('twist'));
+  variable_set('theme_default', 'twist');
+}
+
+
+
+

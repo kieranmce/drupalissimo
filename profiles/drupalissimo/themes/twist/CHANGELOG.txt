@@ -1,0 +1,6 @@
+
+## 7.x-1.0
+
+- 2012-01-23: Adding toggle block support into branding region.
+- 2012-01-23: Adding new style for field descriptions: yellow background and 
+  floating on the right.

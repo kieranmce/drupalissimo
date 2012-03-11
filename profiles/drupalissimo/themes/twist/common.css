@@ -1,0 +1,153 @@
+/** 
+ * Common styles, meant to be shared with sub-themes.
+ */
+
+ 
+div.toggle-blocks div.block {
+  position: relative;
+  float: right;
+  margin-bottom: 0;
+}
+div.toggle-blocks div.block-content {
+  box-shadow: 1px 1px 1px #777;
+  border-radius: 3px 0 3px 3px;
+  right: 0;
+  display: none;
+  position: absolute;
+  width: 200px;
+}
+div.toggle-blocks div.block-title {
+  padding: 0 10px !important;
+  margin-left: 10px !important;
+  border-left: 1px solid #555;
+  border-right: 1px solid #555;  
+  cursor: pointer;
+}
+div.toggle-blocks div.block-title.toggle-active {
+}
+div.toggle-blocks div.block-title h2 {
+  font-size: 13px;
+}
+div.toggle-blocks .block-title.toggle-active h2 {
+  color: #333;
+}
+div.toggle-blocks ul.menu {
+  margin: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #EEE;
+  background: whiteSmoke;
+}
+div.toggle-blocks ul.menu li {
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+div.toggle-blocks ul.menu li a {
+  display: block;
+  padding: 3px 7px;
+  color: #333;
+}
+div.toggle-blocks ul.menu li.last {
+  border-bottom: 0;
+} 
+div.toggle-blocks ul.menu li a:hover {
+  background-color: yellowgreen;
+  color: #fff;
+}
+div.toggle-blocks {
+  font-size: 12px;
+}
+
+div.toggle-blocks .inner {
+  padding: 3px 0;
+}
+/*
+div.toggle-blocks div.block {
+  float: right;
+  position: relative;
+}
+div.toggle-blocks div.block-content {
+  width: 200px;
+  display: none;
+  position: absolute;
+  right: 0;
+  left: auto;
+  z-index: 1000;    
+  background: #fff;
+  -moz-box-shadow: 1px 2px 2px #333;
+  -webkit-box-shadow: 1px 2px 2px #333;
+}
+div.toggle-blocks div.block-title:hover {
+  cursor: pointer;
+}
+div.toggle-blocks div.block,
+div.toggle-blocks div.block-title,
+div.toggle-blocks div.block-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+div.toggle-blocks div.block-title h2 {
+  font-size: 12px;
+}*/
+
+
+.page-content .node-form .form-item,
+.page-content .node-form .text-format-wrapper {
+  position: relative;
+}
+
+.page-content .node-form .text-format-wrapper .description,
+.page-content .node-form .form-item .description {
+  position: absolute;
+  top: 0;
+  right: -270px;
+  z-index: 5;
+  color: #726D59;
+  font-size: 13px;
+  line-height: 18px;
+  background: none;
+  width: 270px;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+  display: none;
+  display: block;
+}
+
+.page-content .node-form .form-item.form-type-date-select .description {
+  right: -553px;
+}
+
+.page-content .node-form .text-format-wrapper .description-container,
+.page-content .node-form .form-item .description-container {
+  margin-top: 5px;
+  background: url(images/popup-node.png) 0 0 no-repeat;
+}
+.page-content .node-form .text-format-wrapper .description-inner,
+.page-content .node-form .form-item .description-inner {
+  padding: 10px;
+  margin-left: 10px;
+  border: 1px solid #E4DBB1;
+  border-left: 0;
+  box-shadow: 1px 1px 2px #eee;
+  font-size: 12px;
+  line-height: 18px;  
+}
+
+.page-content .node-form .text-format-wrapper:hover .description,
+.page-content .node-form .form-item:hover {
+  z-index:1;
+  height:auto; /* Fix for flicker in IE7 */
+}
+
+.page-content .node-form .text-format-wrapper:hover > .description { display:block; }
+.page-content .node-form .form-item:hover > .description { display:block; }
+
+.page-content .node-form div.form-wrapper {
+  margin-top: 20px;
+}
+.page-content .node-form div.form-wrapper.filter-help {
+  padding-top: 0;
+  margin-top: 0;
+}
