@@ -4,8 +4,8 @@
  * Implements hook_install().
  */
 function drupalissimo_install() {
-  theme_enable(array('twist'));
-  variable_set('theme_default', 'twist');
+  theme_enable(array('sparkle'));
+  variable_set('theme_default', 'sparkle');
 }
 
 

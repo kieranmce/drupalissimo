@@ -36,3 +36,4 @@ dependencies[] = feature_core
 dependencies[] = feature_news
 dependencies[] = feature_pages
 dependencies[] = feature_spotlight
+dependencies[] = drupalissimo_core

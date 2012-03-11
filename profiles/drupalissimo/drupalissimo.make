@@ -32,8 +32,19 @@ projects[feature_spotlight][subdir] = features
 projects[feature_spotlight][download][type] = "git"
 projects[feature_spotlight][download][url] = git://github.com/drupaltraining/feature_spotlight.git
 
+projects[drupalissimo_core][type] = module
+projects[drupalissimo_core][subdir] = features
+projects[drupalissimo_core][download][type] = "git"
+projects[drupalissimo_core][download][url] = git://github.com/drupaltraining/drupalissimo_core.git
+
+
 ; Themes ======================================================================
 
 projects[twist][type] = theme
 projects[twist][download][type] = git
 projects[twist][download][url] = git://github.com/drupaltraining/twist.git
+
+projects[sparkle][type] = theme
+projects[sparkle][download][type] = "git"
+projects[sparkle][download][url] = git://github.com/drupaltraining/sparkle.git
+
