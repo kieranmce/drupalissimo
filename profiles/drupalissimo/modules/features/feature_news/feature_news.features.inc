@@ -96,8 +96,8 @@ function feature_news_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '256',
-          'height' => '194',
+          'width' => '630',
+          'height' => '250',
         ),
         'weight' => '1',
       ),
