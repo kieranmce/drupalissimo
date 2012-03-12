@@ -133,3 +133,9 @@ div.node {
   font-size: 27px;
   color: #EB0F00;
 }
+
+.node-content .field-name-field-news-image {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
