@@ -59,6 +59,8 @@ function drupalissimo_core_context_default_contexts() {
       'values' => array(
         '~admin' => '~admin',
         '~admin/*' => '~admin/*',
+        '~node/*/edit' => '~node/*/edit',
+        '~node/add/*' => '~node/add/*',
       ),
     ),
     'sitewide' => array(
@@ -81,10 +83,10 @@ function drupalissimo_core_context_default_contexts() {
     ),
     'theme_regions' => array(
       'region_branding' => '',
-      'region_content' => 'size-75',
+      'region_content' => 'size-70',
       'region_featured' => '',
       'region_help' => '',
-      'region_left' => 'size-25',
+      'region_left' => 'size-30',
       'region_page_top' => '',
       'region_page_bottom' => '',
       'region_right' => '',
