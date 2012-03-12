@@ -61,6 +61,8 @@ function drupalissimo_core_context_default_contexts() {
         '~admin/*' => '~admin/*',
         '~node/*/edit' => '~node/*/edit',
         '~node/add/*' => '~node/add/*',
+        '~user' => '~user',
+        '~user/*' => '~user/*',
       ),
     ),
     'sitewide' => array(
