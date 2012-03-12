@@ -1,0 +1,126 @@
+
+body.tao {
+  color: #555;
+  background: #9CD0DE url(images/bg-body.png) top center no-repeat;
+}
+#header {
+  text-align: center;
+  padding: 10px 0;
+}
+#main-content {
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px #555;
+  background-color: #fff;
+}
+#footer {
+  background: transparent;
+}
+a {
+  color: #569DB0;
+  text-decoration: none;
+}
+
+ul.menu {
+ border: 1px solid #B1DBE5;
+ border-radius: 4px;
+}
+ul.menu li {
+  padding: 0 !important;
+}
+ul.menu li a {
+  display: block;
+  padding: 5px 10px;
+  border-bottom: 1px solid #B1DBE5;
+  border-radius: 4px 4px 0 0;
+}
+ul.menu li a.active,
+ul.menu li a:hover {
+  background: #DDEFF2;
+  color: #1E94AF;
+}
+
+ul.menu li:last-child a {
+  border-radius: 0 0 4px 4px;
+  border-bottom: 0;  
+}
+#block-system-main-menu .block-title {
+  display: none;
+}
+#block-system-main-menu.block .block-content {
+  padding: 0;
+}
+.field-type-image img {
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px #ddd;
+}
+.field-name-title h2 {
+  font-size: 16px;
+  line-height: 21px;
+}
+.field-name-title {
+  padding-bottom: 5px;
+}
+.field-name-post-date {
+  font-size: 11px;
+  color: #888;
+}
+.views-row {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.views-row:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 0;  
+}
+div.node {
+  margin-bottom: 0;
+}
+#footer {
+  padding: 15px 0;
+  min-height: 50px;
+}
+#branding a {
+  color: #fff;  
+}
+#branding {
+  box-shadow: 0 1px 3px #333;
+  background: #333;  
+  color: #fff;
+}
+#branding .breadcrumb a, #branding .breadcrumb strong {
+  color: #fff;
+  font-weight: normal;
+  float: left;
+  margin-right: -1px;
+  padding: 5px 15px;
+}
+.tabs {
+  position: relative;
+  right: auto;
+  float: right;
+}
+.primary-tabs {
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+.block .block-title h2 {
+  text-shadow: 1px 1px 1px #1E94AF;
+  color: #fff;
+  font-size: 18px;
+  padding: 2px 0;
+  background: #B1DBE5;
+  border-radius: 5px;  
+}
+.block .block-title {
+  padding: 0;
+  text-align: center;
+  margin-bottom: 0;
+  margin-bottom: 10px;
+}
+.main-inner {
+  padding: 7px;
+}
