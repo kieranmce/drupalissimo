@@ -21,7 +21,7 @@ a {
 }
 
 ul.menu {
- border: 1px solid #B1DBE5;
+ border: 1px solid #C7DEE2;
  border-radius: 4px;
 }
 ul.menu li {
@@ -30,12 +30,12 @@ ul.menu li {
 ul.menu li a {
   display: block;
   padding: 5px 10px;
-  border-bottom: 1px solid #B1DBE5;
+  border-bottom: 1px solid #C7DEE2;
   border-radius: 4px 4px 0 0;
 }
 ul.menu li a.active,
 ul.menu li a:hover {
-  background: #DDEFF2;
+  background: #F0F6F7;
   color: #1E94AF;
 }
 
