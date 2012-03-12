@@ -82,7 +82,7 @@ div.node {
 }
 #footer {
   padding: 15px 0;
-  min-height: 50px;
+  min-height: 0px;
 }
 #branding a {
   color: #fff;  
@@ -142,4 +142,14 @@ div.node {
 }
 .limiter {
   width: 940px;
+}
+#footer a {
+  color: #1E94AF;
+  text-decoration: none;
+  border-bottom: 1px dotted #1E94AF;
+}
+#footer {
+  font-size: 11px;
+  color: #1E94AF;
+  text-align: center;
 }
