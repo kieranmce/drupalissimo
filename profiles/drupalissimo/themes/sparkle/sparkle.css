@@ -124,3 +124,12 @@ div.node {
 .main-inner {
   padding: 7px;
 }
+#page-title .page-title {
+  float: left;
+  padding: 10px 10px 15px 0px;
+  line-height: 30px;
+  min-height: 30px;
+  font-weight: normal;
+  font-size: 27px;
+  color: #EB0F00;
+}
