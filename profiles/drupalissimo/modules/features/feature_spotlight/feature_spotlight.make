@@ -10,3 +10,9 @@ projects[views_slideshow][version] = 3.x-dev
 projects[libraries][subdir] = contrib
 projects[libraries][version] = 1.0
 
+; Libraries ===================================================================
+
+libraries[jquery_cycle_library][download][type] = "get"
+libraries[jquery_cycle_library][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
+libraries[jquery_cycle_library][directory_name] = "jquery.cycle"
+libraries[jquery_cycle_library][destination] = "libraries"
