@@ -7,7 +7,7 @@
   </div></div>    
   <div id='content' class='page-content clearfix position left <?php print (isset($region_content) && !empty($region_content) ? $region_content : 'size-65') ?>'><div class='inner'>
       
-    <div id='page-title'><div class='clearfix inner'>
+    <div id='page-title'><div class='clearfix'>
       <div class='tabs clearfix'>
         <?php if ($primary_local_tasks): ?>
           <ul class='primary-tabs links clearfix'><?php print render($primary_local_tasks) ?></ul>
