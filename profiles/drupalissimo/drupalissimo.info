@@ -1,6 +1,6 @@
 name = Drupalissimo Profile
 core = 7.x
-description = starter - installation profile template.
+description = Drupalissimo installation profile.
 
 ; Core
 dependencies[] = book
