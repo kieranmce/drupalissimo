@@ -29,7 +29,6 @@ function drupalissimo_install_tasks() {
  * Implements hook_install_tasks() callback
  */
 function drupalissimo_create_terms() {
-  return;
   $terms = array();  
   $vocabulary = taxonomy_vocabulary_machine_name_load('category');
 
