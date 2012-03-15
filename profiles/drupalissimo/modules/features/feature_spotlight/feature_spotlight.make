@@ -7,9 +7,6 @@ core = 7.x
 projects[views_slideshow][subdir] = contrib
 projects[views_slideshow][version] = 3.x-dev
 
-projects[libraries][subdir] = contrib
-projects[libraries][version] = 1.0
-
 ; Libraries ===================================================================
 
 libraries[jquery_cycle_library][download][type] = "get"
