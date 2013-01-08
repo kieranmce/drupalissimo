@@ -61,46 +61,52 @@ $.fn.dsCtoolsContentConfiguration = function (configuration) {
 }
 
 /**
+ * Update the select content text.
+ */
+$.fn.dsCtoolsContentUpdate = function () {
+  $(this[0]).html(Drupal.t('Click update to save the configuration'));
+}
+
+/**
  * Field template.
  */
 Drupal.behaviors.settingsToggle = {
-  attach: function (context) {  
+  attach: function (context) {
 
-    // Remove click from link.
-    $('.ft-link').click(function(e) {
+    // Bind on click.
+    $(context).find('#field-display-overview').find('.ft-link').once('ds-ft').bind('click', function(e) {
+
       e.preventDefault();
-    });
 
-    // Bind update button.
-    $('#field-display-overview .ft-update').click(function() {
+      var fieldTemplate = $(this).next();
 
-      // Close the settings.
-      var settings = $(this).parents('.field-template');
-      settings.hide();
-      $(this).parents('tr').removeClass('field-formatter-settings-editing');
+      // Bind update button.
+      fieldTemplate.find('.ft-update').click(function() {
 
-      // Check the label.
-      var row = $(this).parents('tr');
-      var label = $('.label-change', settings).val();
-      var original = $('.original-label', row).val();
-      if (label != '') {
-        new_label = label + ' (Original: ' + original + ')<input type="hidden" class="original-label" value="' + original + '">';
-        $('.field-label-row', row).html(new_label);
-      }
-      else {
-        new_label = original + '<input type="hidden" class="original-label" value="' + original + '">';
-        $('.field-label-row', row).html(new_label);
-      }
-      return false;
-    });
+        // Close the settings.
+        var settings = $(this).parents('.field-template');
+        settings.hide();
+        $(this).parents('tr').removeClass('field-formatter-settings-editing');
 
-    // Bind on field template select button.
-    $('.ds-extras-field-template').change(function() {
-      ds_show_expert_settings(this);
-    });
+        // Check the label.
+        var row = $(this).parents('tr');
+        var label = $('.label-change', settings).val();
+        var original = $('.original-label', row).val();
+        if (label != '') {
+          new_label = label + ' (Original: ' + original + ')<input type="hidden" class="original-label" value="' + original + '">';
+          $('.field-label-row', row).html(new_label);
+        }
+        else {
+          new_label = original + '<input type="hidden" class="original-label" value="' + original + '">';
+          $('.field-label-row', row).html(new_label);
+        }
+        return false;
+      });
 
-    // Add click event to field settings link.
-    $('.ft-link').click(function() {
+      // Bind on field template select button.
+      fieldTemplate.find('.ds-extras-field-template').change(function() {
+        ds_show_expert_settings(this);
+      })
 
       $(this).parents('tr').siblings().removeClass('field-formatter-settings-editing');
       $(this).parents('tr').addClass('field-formatter-settings-editing');
@@ -151,6 +157,14 @@ Drupal.behaviors.settingsToggle = {
         $('.ow, .fis, .fi', field).hide();
       }
 
+      // Colon.
+      if (ft == 'theme_field' || ft == 'theme_ds_field_reset') {
+        $('.colon-checkbox', field).parent().hide();
+      }
+      else if ($('.lb .form-item:nth-child(1)', field).is(':visible')) {
+        $('.colon-checkbox', field).parent().show();
+      }
+
       // Styles.
       if (ft != 'theme_ds_field_expert' && ft != 'theme_ds_field_reset') {
         $('.field-styles', field).show();
@@ -159,8 +173,25 @@ Drupal.behaviors.settingsToggle = {
         $('.field-styles', field).hide();
       }
     }
+
+    $('.label-change').change(function() {
+      var field = $(this).parents('tr');
+      if ($('.field-template', field).length > 0) {
+        ft = $('.ds-extras-field-template', field).val();
+        if (ft == 'theme_field' || ft == 'theme_ds_field_reset') {
+          $('.colon-checkbox', field).parent().hide();
+        }
+      }
+    });
   }
 };
+
+/**
+ * Save the page after saving a new field.
+ */
+$.fn.dsRefreshDisplayTable = function () {
+  $('#edit-submit').click();
+}
 
 /**
  * Row handlers for the 'Manage display' screen.
@@ -174,8 +205,13 @@ Drupal.fieldUIDisplayOverview.ds = function (row, data) {
   this.region = data.region;
   this.tableDrag = data.tableDrag;
 
+  // Attach change listener to the 'region' select.
   this.$regionSelect = $('select.ds-field-region', row);
   this.$regionSelect.change(Drupal.fieldUIOverview.onChange);
+
+  // Attach change listener to the 'formatter type' select.
+  this.$formatSelect = $('select.field-formatter-type', row);
+  this.$formatSelect.change(Drupal.fieldUIOverview.onChange);
 
   return this;
 };
@@ -194,7 +230,7 @@ Drupal.fieldUIDisplayOverview.ds.prototype = {
    *
    * This function is called when the row is moved to a different region, as a
    * result of either :
-   * - a drag-and-drop action 
+   * - a drag-and-drop action
    * - user input in one of the form elements watched by the
    *   Drupal.fieldUIOverview.onChange change listener.
    *
@@ -207,16 +243,23 @@ Drupal.fieldUIDisplayOverview.ds.prototype = {
    */
   regionChange: function (region) {
 
-    // Replace dashes with underscores.
-    region = region.replace('-', '_');
-    
-    this.$regionSelect.val(region);    
+     // Replace dashes with underscores.
+     region = region.replace(/-/g, '_');
 
-    var refreshRows = {};
-    refreshRows[this.name] = this.$regionSelect.get(0);
+     // Set the region of the select list.
+     this.$regionSelect.val(region);
 
-    return refreshRows;
-  },
+     // Prepare rows to be refreshed in the form.
+     var refreshRows = {};
+     refreshRows[this.name] = this.$regionSelect.get(0);
+
+     // If a row is handled by field_group module, loop through the children.
+     if ($(this.row).hasClass('field-group') && $.isFunction(Drupal.fieldUIDisplayOverview.group.prototype.regionChangeFields)) {
+       Drupal.fieldUIDisplayOverview.group.prototype.regionChangeFields(region, this, refreshRows);
+     }
+
+     return refreshRows;
+  }
 };
 
 })(jQuery);

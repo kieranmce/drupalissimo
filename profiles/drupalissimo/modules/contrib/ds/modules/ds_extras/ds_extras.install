@@ -38,12 +38,54 @@ function ds_extras_schema() {
       'label' => array(
         'description' => 'The label for the views display.',
         'type' => 'varchar',
-        'length' => 64,
+        'length' => 132,
         'not null' => TRUE,
         'default' => '',
       ),
     ),
     'primary key' => array('vd'),
+  );
+
+  $schema['cache_ds_panels'] = array(
+    'description' => 'Cache panel display content created with panel view modes.',
+    'fields' => array(
+      'cid' => array(
+        'description' => 'Primary Key: Unique cache ID.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'data' => array(
+        'description' => 'A collection of data to cache.',
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+      ),
+      'expire' => array(
+        'description' => 'A Unix timestamp indicating when the cache entry should expire, or 0 for never.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'created' => array(
+        'description' => 'A Unix timestamp indicating when the cache entry was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'serialized' => array(
+        'description' => 'A flag to indicate whether content is serialized (1) or not (0).',
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'expire' => array('expire'),
+    ),
+    'primary key' => array('cid'),
   );
 
   return $schema;
@@ -61,7 +103,7 @@ function ds_extras_install() {
   }
 
   db_update('system')
-    ->fields(array('weight' => 1))
+    ->fields(array('weight' => 2))
     ->condition('name', 'ds_extras')
     ->execute();
 }
@@ -74,27 +116,20 @@ function ds_extras_uninstall() {
   variable_del('ds_extras_region_blocks');
   variable_del('ds_extras_switch_view_mode');
   variable_del('ds_extras_vd');
-  variable_del('ds_extras_fivestar');
   variable_del('ds_extras_hide_page_title');
   variable_del('ds_extras_field_template');
   variable_del('ds_styles_fields');
   variable_del('ds_extras_fields_extra');
   variable_del('ds_extras_fields_extra_list');
   variable_del('ds_extras_switch_field');
+  variable_del('ds_extras_panel_view_modes');
+  variable_del('ds_extras_editor_switch');
+  variable_del('ds_extras_revision_view_mode');
   variable_del('ft-default');
-  variable_del('ft-kill');
+  variable_del('ft-kill-colon');
   variable_del('ds_extras_contextual');
+  variable_del('ds_extras_hidden_region');
   db_drop_field('node_revision', 'ds_switch');
-
-  // Remove fivestar variables.
-  $types = node_type_get_names();
-  foreach ($types as $node_type => $name) {
-    $variable = 'fivestar_' . $node_type;
-    $enabled = variable_get('ds_' . $variable, 0);
-    variable_set($variable, $enabled);
-  }
-  db_query("DELETE FROM {variable} WHERE name LIKE 'ds_fivestar_%'");
-  cache_clear_all('variables', 'cache');
 }
 
 /**
@@ -102,7 +137,7 @@ function ds_extras_uninstall() {
  */
 function ds_extras_schema_alter(&$schema) {
 
-  // Add a field ds_extras to the node_revision table in order
+  // Add a field ds_switch to the node_revision table in order
   // to store the name of view mode to switch to.
   if (isset($schema['node_revision'])) {
     $schema['node_revision']['fields']['ds_switch'] = array(
@@ -135,3 +170,27 @@ function ds_extras_update_7002() {
  * Implements hook_update_N().
  */
 function ds_extras_update_7003() {}
+
+/**
+ * Implements hook_update_N().
+ */
+function ds_extras_update_7004() {
+  $schema = ds_extras_schema();
+  db_create_table('cache_ds_panels', $schema['cache_ds_panels']);
+}
+
+/**
+ * Cleanup ft-kill variable, change module weight and change vd label field.
+ */
+function ds_extras_update_7005() {
+  variable_del('ft-kill');
+
+  db_update('system')
+    ->fields(array('weight' => 2))
+    ->condition('name', 'ds_extras')
+    ->execute();
+
+  if (db_table_exists('ds_vd')) {
+    db_change_field('ds_vd', 'label', 'label', array('description' => 'The label for the views display.', 'type' => 'varchar', 'length' => 132, 'not null' => TRUE, 'default' => ''));
+  }
+}

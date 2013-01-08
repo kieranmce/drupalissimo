@@ -20,6 +20,7 @@ function ds_drush_command() {
       'name'    => 'Name for your layout.',
       'regions' => 'Regions for your layout, comma-separated.',
       'css'     => 'Set this to true if you want to include a CSS file for your layout.',
+      'form'    => 'Set this to true if you want to make this template available for forms.'
     ),
     'examples' => array(
       'drush ds-build "My layout name"' => 'Create a layout with a few example regions.',
@@ -60,7 +61,8 @@ function drush_ds_build($name = NULL) {
   }
 
   // Copy the example templates.
-  drush_op('copy', $ds_layout_path . '/example_layout.tpl.php', $layout_path . "/$machine_name.tpl.php");
+  $tpl_machine_name = strtr($machine_name, '_', '-');
+  drush_op('copy', $ds_layout_path . '/example-layout.tpl.php', $layout_path . "/$tpl_machine_name.tpl.php");
   drush_op('copy', $ds_layout_path . '/example_layout.inc', $layout_path . "/$machine_name.inc");
 
   // Prepare an array of things that need to be rewritten in our templates.
@@ -95,6 +97,14 @@ function drush_ds_build($name = NULL) {
     $replace[] = '$1';
   }
 
+  // Check on form option.
+  $form = drush_get_option('form');
+  if (isset($form)) {
+    // Uncomment the Form rule in our configuration.
+    $find[] = "/\/\/ ('form' => TRUE,)/";
+    $replace[] = '$1';
+  }
+
   // Replace example region PHP/HTML code.
   if ($regions) {
     $find[] = '/  <!-- regions -->.+<!-- \/regions -->/s';
@@ -106,7 +116,7 @@ function drush_ds_build($name = NULL) {
   }
 
   // Rewrite templates.
-  drush_op('ds_file_preg_replace', array($layout_path . "/$machine_name.tpl.php", $layout_path . "/$machine_name.inc"), $find, $replace);
+  drush_op('ds_file_preg_replace', array($layout_path . "/$tpl_machine_name.tpl.php", $layout_path . "/$machine_name.inc"), $find, $replace);
 
   // Notify user of the newly created templates.
   drush_print(dt('Templates for "!name" created in: !path', array('!name' => $name, '!path' => $layout_path)));

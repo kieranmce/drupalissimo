@@ -13,7 +13,10 @@ Drupal.behaviors.DSSearchHighlight = {
     
     words = search.split(' ');
     for (i = 0; i < words.length; i++) {
-      $selector.highlight(words[i]);
+      // Match only valid words. Do not match special search operators or words less than three characters.
+      if (words[i] != '' && words[i] != 'AND' && words[i] != 'OR' && words[i].length >= 3) {
+        $selector.highlight(words[i]);
+      }
     }
   }
 };
