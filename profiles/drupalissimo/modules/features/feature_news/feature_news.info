@@ -40,6 +40,7 @@ features[user_permission][] = delete any news content
 features[user_permission][] = delete own news content
 features[user_permission][] = edit any news content
 features[user_permission][] = edit own news content
+features[variable][] = field_bundle_settings_node__news
 features[variable][] = menu_options_news
 features[variable][] = menu_parent_news
 features[variable][] = node_options_news

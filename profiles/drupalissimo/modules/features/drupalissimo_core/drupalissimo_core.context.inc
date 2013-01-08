@@ -10,7 +10,7 @@
 function drupalissimo_core_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'core-front';
@@ -48,7 +48,7 @@ function drupalissimo_core_context_default_contexts() {
   t('Frontpage');
   $export['core-front'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'core-sitewide';
@@ -101,7 +101,7 @@ function drupalissimo_core_context_default_contexts() {
   t('Sitewide');
   $export['core-sitewide'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'side-blocks';

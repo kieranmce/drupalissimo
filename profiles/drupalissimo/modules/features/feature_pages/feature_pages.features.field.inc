@@ -10,7 +10,7 @@
 function feature_pages_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-page-body'
+  // Exported field: 'node-page-body'.
   $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function feature_pages_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -83,7 +84,7 @@ function feature_pages_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-field_page_attachments'
+  // Exported field: 'node-page-field_page_attachments'.
   $fields['node-page-field_page_attachments'] = array(
     'field_config' => array(
       'active' => '1',
@@ -104,6 +105,7 @@ function feature_pages_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -148,6 +150,7 @@ function feature_pages_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 1,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'image_medium',
           'insert_styles' => array(
