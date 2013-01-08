@@ -10,7 +10,7 @@
 function feature_news_ds_field_settings_info() {
   $export = array();
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|news|core_news_events';
   $ds_fieldsetting->entity_type = 'node';
@@ -40,7 +40,7 @@ function feature_news_ds_field_settings_info() {
   );
   $export['node|news|core_news_events'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|news|core_small_teaser';
   $ds_fieldsetting->entity_type = 'node';
@@ -65,7 +65,7 @@ function feature_news_ds_field_settings_info() {
   );
   $export['node|news|core_small_teaser'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|news|spotlight';
   $ds_fieldsetting->entity_type = 'node';
@@ -85,7 +85,7 @@ function feature_news_ds_field_settings_info() {
   );
   $export['node|news|spotlight'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|news|teaser';
   $ds_fieldsetting->entity_type = 'node';
@@ -119,7 +119,7 @@ function feature_news_ds_field_settings_info() {
 function feature_news_ds_layout_settings_info() {
   $export = array();
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|news|core_news_events';
   $ds_layout->entity_type = 'node';
@@ -149,7 +149,7 @@ function feature_news_ds_layout_settings_info() {
   );
   $export['node|news|core_news_events'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|news|core_small_teaser';
   $ds_layout->entity_type = 'node';
@@ -178,7 +178,7 @@ function feature_news_ds_layout_settings_info() {
   );
   $export['node|news|core_small_teaser'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|news|spotlight';
   $ds_layout->entity_type = 'node';
@@ -203,7 +203,7 @@ function feature_news_ds_layout_settings_info() {
   );
   $export['node|news|spotlight'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|news|teaser';
   $ds_layout->entity_type = 'node';

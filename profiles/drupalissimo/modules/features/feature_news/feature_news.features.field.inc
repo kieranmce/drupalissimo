@@ -10,7 +10,7 @@
 function feature_news_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-news-body'
+  // Exported field: 'node-news-body'.
   $fields['node-news-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function feature_news_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -116,7 +117,7 @@ function feature_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-news-field_news_attachments'
+  // Exported field: 'node-news-field_news_attachments'.
   $fields['node-news-field_news_attachments'] = array(
     'field_config' => array(
       'active' => '1',
@@ -137,6 +138,7 @@ function feature_news_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 1,
@@ -206,6 +208,7 @@ function feature_news_field_default_fields() {
         'module' => 'file',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(
@@ -228,7 +231,7 @@ function feature_news_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-news-field_news_image'
+  // Exported field: 'node-news-field_news_image'.
   $fields['node-news-field_news_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -249,6 +252,7 @@ function feature_news_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -338,6 +342,7 @@ function feature_news_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'insert' => 0,
+          'insert_absolute' => FALSE,
           'insert_class' => '',
           'insert_default' => 'auto',
           'insert_styles' => array(

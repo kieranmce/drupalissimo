@@ -10,7 +10,7 @@
 function feature_core_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Rich text
+  // Exported format: Rich text.
   $formats['core_rich_text'] = array(
     'format' => 'core_rich_text',
     'name' => 'Rich text',

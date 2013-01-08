@@ -10,13 +10,13 @@
 function feature_core_user_default_roles() {
   $roles = array();
 
-  // Exported role: editor
+  // Exported role: editor.
   $roles['editor'] = array(
     'name' => 'editor',
     'weight' => '2',
   );
 
-  // Exported role: manager
+  // Exported role: manager.
   $roles['manager'] = array(
     'name' => 'manager',
     'weight' => '3',

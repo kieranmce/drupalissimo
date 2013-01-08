@@ -26,10 +26,7 @@ function feature_news_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function feature_news_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -38,7 +35,7 @@ function feature_news_views_api() {
 function feature_news_image_default_styles() {
   $styles = array();
 
-  // Exported image style: news-m
+  // Exported image style: news-m.
   $styles['news-m'] = array(
     'name' => 'news-m',
     'effects' => array(
@@ -60,7 +57,7 @@ function feature_news_image_default_styles() {
     ),
   );
 
-  // Exported image style: news-s
+  // Exported image style: news-s.
   $styles['news-s'] = array(
     'name' => 'news-s',
     'effects' => array(
@@ -82,7 +79,7 @@ function feature_news_image_default_styles() {
     ),
   );
 
-  // Exported image style: news-spotlight
+  // Exported image style: news-spotlight.
   $styles['news-spotlight'] = array(
     'name' => 'news-spotlight',
     'effects' => array(
