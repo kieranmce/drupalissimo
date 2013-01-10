@@ -5,22 +5,22 @@ core = 7.x
 ; Modules =====================================================================
 
 projects[pathauto][subdir] = contrib
-projects[pathauto][version] = 1.0-rc2
+projects[pathauto][version] = 1.2
 
 projects[token][subdir] = contrib
-projects[token][version] = 1.0-beta2
+projects[token][version] = 1.4
 
 projects[colorbox][subdir] = contrib
-projects[colorbox][version] = 1.0-beta4
+projects[colorbox][version] = 1.4
 
 projects[markdown][subdir] = contrib
-projects[markdown][version] = 1.0-beta1
+projects[markdown][version] = 1.1
 
 projects[insert][subdir] = contrib
-projects[insert][version] = 1.1
+projects[insert][version] = 1.2
 
 projects[ds][subdir] = contrib
-projects[ds][version] = 1.2
+projects[ds][version] = 1.6
 
 ; Libraries ===================================================================
 

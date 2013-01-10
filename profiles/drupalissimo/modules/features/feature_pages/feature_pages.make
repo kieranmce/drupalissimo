@@ -5,7 +5,7 @@ core = 7.x
 ; Modules =====================================================================
 
 projects[menu_block][subdir] = contrib
-projects[menu_block][version] = 2.2
+projects[menu_block][version] = 2.3
 
 projects[context_regions][type] = module
 projects[context_regions][subdir] = custom
