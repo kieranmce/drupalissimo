@@ -19,19 +19,10 @@ function feature_pages_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'activity' => 'activity',
-        'event' => 'event',
-        'news' => 'news',
         'page' => 'page',
       ),
       'options' => array(
         'node_form' => '0',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'news-events' => 'news-events',
-        'activities' => 'activities',
       ),
     ),
   );
