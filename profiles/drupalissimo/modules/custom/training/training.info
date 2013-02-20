@@ -1,3 +1,7 @@
+
+; Explain various directives like dependencies, files, etc...
+; Also explain comments
+
 name = "Training"
 dependencies[] = "node"
 description = "Training on Drupal module development."
@@ -6,3 +10,6 @@ core = "7.x"
 
 files[] = training.module
 files[] = training.install
+
+stylesheets[all][] = training.css
+scripts[] = training.js
