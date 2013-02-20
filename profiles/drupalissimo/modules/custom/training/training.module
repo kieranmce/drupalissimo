@@ -6,6 +6,12 @@
 function training_init() {
   // Hook implementation example: run all the times.
   drupal_set_message(t('In training_init()'));
+  
+  // Invoke custom hook
+  $data = array(1, 2, 3);
+  module_invoke_all('training', $data);
+  drupal_alter('training', $data);
+  drupal_set_message(t('After hook_training_alter() ') . print_r($data, TRUE));  
 }
 
 /**
@@ -20,3 +26,30 @@ function training_cron() {
   // In training_cron()    
   drupal_set_message(t('In training_cron()'));
 }
+
+/**
+ * Implements hook_username_alter()
+ */
+function training_username_alter(&$name, $account) {
+  
+  // Altering username, visit my account page.
+  $name = 'Mr. '. drupal_ucfirst($name);
+}
+
+/**
+ * Implement hook_training()
+ */
+function training_training($data) {
+  drupal_set_message(t('In hook_training()'));
+}
+
+/**
+ * Implement hook_training_alter()
+ */
+function training_training_alter(&$data) {
+  $data[] = 4;
+}
+
+
+
+
