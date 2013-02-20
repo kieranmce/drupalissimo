@@ -1,0 +1,8 @@
+name = "Training"
+dependencies[] = "node"
+description = "Training on Drupal module development."
+package = "Training"
+core = "7.x"
+
+files[] = training.module
+files[] = training.install

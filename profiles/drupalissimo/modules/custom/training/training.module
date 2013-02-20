@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_init()
+ */
+function training_init() {
+  // Hook implementation example: run all the times.
+  drupal_set_message(t('In training_init()'));
+}
+
+/**
+ * Implements hook_cron()
+ */
+function training_cron() {
+  // Hook implementation example: run only when CRON runs.
+  // 
+  // $ dr cron
+  // In training_init()                                                                                                                                                                                 [status]
+  // Cron run successful.                                                                                                                                                                               [success]
+  // In training_cron()    
+  drupal_set_message(t('In training_cron()'));
+}
