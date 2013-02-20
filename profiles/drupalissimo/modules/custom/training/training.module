@@ -53,6 +53,44 @@ function training_training_alter(&$data) {
   $data[] = 4;
 }
 
+
+
+/**
+ * Implements hook_node_presave()
+ * 
+ * Act on a node being inserted or updated.
+ */
+function training_node_presave($node) {
+  if ($node->nid) {
+    drupal_set_message(t('After updating an existing one'));
+    $node->training = TRUE;
+  }
+}
+
+/**
+ * Implements hook_node_insert()
+ */
+function training_node_insert($node) {
+  drupal_set_message(t('After saving a new node'));
+}
+
+/**
+ * Implements hook_node_update()
+ */
+function training_node_update($node) {
+  drupal_set_message(t('After saving an updated post'));
+}
+
+/**
+ * Implements hook_node_delete()
+ */
+function training_node_delete($node) {
+  drupal_set_message(t('Before deleting a node'));
+}
+
+
+
+
 /**
  * Implements hook_menu().
  */
@@ -91,6 +129,9 @@ function training_menu() {
     // The 'access arguments' are passed to the 'access callback' to help it
     // do its job. In the case of user_access(), we need to pass a permission
     // as the first argument.
+    
+    // IMPORTANT: introduce hook_permissions and visit permissions UI.
+    
     'access arguments' => array('administer training module'),
     'weight' => 10,
     'menu_name' => 'main-menu',
