@@ -12,6 +12,9 @@ function training_init() {
   module_invoke_all('training', $data);
   drupal_alter('training', $data);
   drupal_set_message(t('After hook_training_alter() ') . print_r($data, TRUE));  
+  
+  // Node APIs: node_load, etc... create a page first then load it with node_load 
+  $node = node_load(0);
 }
 
 /**
@@ -50,6 +53,113 @@ function training_training_alter(&$data) {
   $data[] = 4;
 }
 
+/**
+ * Implements hook_menu().
+ */
+function training_menu() {
+
+  $items['training'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'Menu callback',
+    'page callback' => 'training_menu_callback',
+    'access callback' => TRUE,
+  );
+  
+  
+  $items['training/menu_example'] = array(
+    // We are using the default menu type, so this can be omitted.
+    // 'type' => MENU_NORMAL_ITEM,
+    // The menu title. Do NOT use t() which is called by default. 
+    'title' => 'Menu Example',
+    'description' => 'Simplest possible menu type, and the parent menu entry for others',
+    'page callback' => 'training_menu_callback',
+    'access callback' => TRUE,
+    'expanded' => TRUE,
+    'menu_name' => 'main-menu',
+  );
+  
+  // Now provide the actual permissioned menu item.
+  $items['training/menu_example/restricted'] = array(
+
+    // The title - do NOT use t() as t() is called automatically.
+    'title' => 'Restricted Menu Item',
+    'page callback' => 'training_menu_callback',
+    
+    // Default:
+    // 'access callback' => 'user_access',
+    
+    // The 'access arguments' are passed to the 'access callback' to help it
+    // do its job. In the case of user_access(), we need to pass a permission
+    // as the first argument.
+    'access arguments' => array('administer training module'),
+    'weight' => 10,
+    'menu_name' => 'main-menu',
+  );  
+  
+  
+  // A menu entry with tabs.
+  // For tabs we need at least 3 things:
+  // 1. A parent MENU_NORMAL_ITEM menu item (examples/menu_example/tabs in this
+  //    example.)
+  // 2. A primary tab (the one that is active when we land on the base menu).
+  //    This tab is of type MENU_DEFAULT_LOCAL_TASK.
+  // 3. Some other menu entries for the other tabs, of type MENU_LOCAL_TASK.
+  $items['training/menu_example/tabs'] = array(
+    // 'type' => MENU_NORMAL_ITEM,  // Not necessary since this is the default.
+    'title' => 'Tabs',
+    'description' => 'Shows how to create primary and secondary tabs',
+    'page callback' => 'training_menu_callback',
+    'access callback' => TRUE,
+    'weight' => 30,
+  );
+
+  // For the default local task, we need very little configuration, as the
+  // callback and other conditions are handled by the parent callback.
+  $items['training/menu_example/tabs/default'] = array(
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'Default primary tab',
+    'weight' => 1,
+  );
+  
+  // Now add the rest of the tab entries.
+  foreach (array(t('second') => 2, t('third') => 3, t('fourth') => 4) as $tabname => $weight) {
+    $items["training/menu_example/tabs/$tabname"] = array(
+      'type' => MENU_LOCAL_TASK,
+      'title' => $tabname,
+      'page callback' => 'training_menu_callback',
+      'access callback' => TRUE,
+
+    // The weight property overrides the default alphabetic ordering of menu
+    // entries, allowing us to get our tabs in the order we want.
+      'weight' => $weight,
+    );
+  }
+  
+  
+  return $items;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function training_permission() {
+  return array(
+    'administer training module' =>  array(
+      'title' => t('Administer training module'),
+      'description' => t('Perform administration tasks for the training module.'),
+    ),
+  );
+}
 
 
+/**
+ * Menu callback.
+ */
+function training_menu_callback($argument = NULL) {
+  
+  if ($argument) {
+    $argument = ', with some argument: '. $argument;
+  }
+  return 'Here some content'. $argument;
+}
 
