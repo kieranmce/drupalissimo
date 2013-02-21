@@ -15,6 +15,14 @@ function training_init() {
   
   // Node APIs: node_load, etc... create a page first then load it with node_load 
   $node = node_load(0);
+  
+  
+  if (user_is_logged_in()) {
+    drupal_set_message(t('User is logged in.'));
+  }
+  else {
+    drupal_set_message(t('User is an anonymous user.'));
+  }  
 }
 
 /**
@@ -176,8 +184,122 @@ function training_menu() {
     );
   }
   
+  // Form example.
+  $items['training/form_example'] = array(
+    'title' => 'Form Example',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('training_form_example'),
+    'access callback' => TRUE,
+    'expanded' => TRUE,
+    'menu_name' => 'main-menu',
+  );
+  
   
   return $items;
+}
+
+/**
+ * Implementing form callback.
+ */
+function training_form_example($form, &$form_state) {
+  $form['description'] = array(
+    '#type' => 'item',
+    '#title' => t('A form with a fieldset'),
+  );
+
+  $form['name'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Name'),
+  );
+  $form['name']['first'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+  );
+  $form['name']['last'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last name'),
+  );
+
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+    '#weight' => 100,
+  );
+  return $form;  
+}
+
+/**
+ * Validation callback.
+ */
+function training_form_example_validate($form, &$form_state) {
+
+  if ($form_state['values']['first'] != 'Antonio') {
+    form_set_error('first', t('You must be called Antonio!'));
+  }
+}
+
+/**
+ * Submit callback.
+ */
+function training_form_example_submit($form, &$form_state) {
+  drupal_set_message(t('Form training_form_example submit callback'));
+}
+
+/**
+ * Implements hook_form_FORMID_alter()
+ * Altering form above.
+ */
+function training_form_training_form_example_alter(&$form) {
+
+  $form['address'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Address'),
+    
+    // Implementing custom theme.
+    '#theme' => 'training_address',
+  );
+  
+  $form['address']['street'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Street'),
+  );  
+  $form['address']['city'] = array(
+    '#type' => 'textfield',
+    '#title' => t('City'),
+  );  
+  $form['address']['country'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Country'),
+  );  
+  
+}
+
+/**
+ * Implements hook_theme()
+ */
+function training_theme() {
+  return array(
+    'training_address' => array(
+      'render element' => 'element',
+    ),    
+  );
+}
+
+/**
+ * Theme callback.
+ */
+function theme_training_address($variables) {
+  $element = $variables['element'];
+  
+  $rows = array();
+  $rows[] = array(
+    drupal_render($element['street']),
+    drupal_render($element['city']),
+    drupal_render($element['country']),
+  );
+  
+  return theme('table', array('rows' => $rows));
 }
 
 /**
