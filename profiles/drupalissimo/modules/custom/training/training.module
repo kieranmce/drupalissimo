@@ -32,8 +32,8 @@ function training_cron() {
   // Hook implementation example: run only when CRON runs.
   // 
   // $ dr cron
-  // In training_init()                                                                                                                                                                                 [status]
-  // Cron run successful.                                                                                                                                                                               [success]
+  // In training_init()        [status]
+  // Cron run successful.      [success]
   // In training_cron()    
   drupal_set_message(t('In training_cron()'));
 }
@@ -96,7 +96,38 @@ function training_node_delete($node) {
   drupal_set_message(t('Before deleting a node'));
 }
 
+/**
+ * Implements hook_permission()
+ */
+function training_permission() {
+  return array(
+    'run unlimited testing sessions' => array(
+      'title' => t('Run unlimited testing sessions'),
+      'description' => t('Avoid that the account is blocked upon logout.'),
+    ),
+  );
+}
 
+/**
+ * Implements hook_user_login()
+ */
+function training_user_login(&$edit, $account) {
+  if (!user_access('run unlimited testing sessions')) {
+    drupal_set_message(t('Your account will be blocked at the end of this session'),  'warning');
+  }
+}
+
+/**
+ * Implements hook_user_logout()
+ */
+function training_user_logout($account) {
+  // Block accounts at the first logout unless they have permission.
+  if (!user_access('run unlimited testing sessions')) {
+    user_load($account->uid);
+    $account->status = 0;
+    user_save($account);
+  }
+}
 
 
 /**
