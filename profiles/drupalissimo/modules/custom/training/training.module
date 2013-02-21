@@ -16,7 +16,6 @@ function training_init() {
   // Node APIs: node_load, etc... create a page first then load it with node_load 
   $node = node_load(0);
   
-  
   if (user_is_logged_in()) {
     drupal_set_message(t('User is logged in.'));
   }
@@ -61,8 +60,6 @@ function training_training_alter(&$data) {
   $data[] = 4;
 }
 
-
-
 /**
  * Implements hook_node_presave()
  * 
@@ -95,8 +92,6 @@ function training_node_update($node) {
 function training_node_delete($node) {
   drupal_set_message(t('Before deleting a node'));
 }
-
-
 
 
 /**
@@ -313,7 +308,6 @@ function training_permission() {
     ),
   );
 }
-
 
 /**
  * Menu callback.
