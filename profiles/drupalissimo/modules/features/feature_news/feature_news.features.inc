@@ -55,6 +55,7 @@ function feature_news_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'news-m',
   );
 
   // Exported image style: news-s.
@@ -77,6 +78,7 @@ function feature_news_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'news-s',
   );
 
   // Exported image style: news-spotlight.
@@ -99,6 +101,7 @@ function feature_news_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'news-spotlight',
   );
 
   return $styles;

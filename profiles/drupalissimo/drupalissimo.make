@@ -5,6 +5,8 @@ core = 7.x
 
 includes[] = http://drupalcode.org/project/buildkit.git/blob_plain/refs/heads/7.x-2.x:/drupal-org.make
 
+projects[context][version] = 3.0-beta7
+
 ; Modules =====================================================================
 
 projects[libraries][subdir] = contrib
